@@ -1,26 +1,35 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
-	author: "nobody",
-	pointsName: "points",
+	name: "The Shark Tree",
+	id: "cpmods.the_shark_tree",
+	author: "Cocaine_Potato",
+	pointsName: "Dwarf Lanternshark Cells",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
-	offlineLimit: 1,  // In hours
+	initialStartPoints: new Decimal (1), // Used for hard resets and new players
+	offlineLimit: 24,  // In hours
 }
+
+//
+// https://www.discoveryuk.com/sharks/shark-size-comparison-quick-fire-guide/
+//
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "Literally nothing",
+	num: "0.1",
+	name: "The Breakup",
 }
 
-let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
-		- Added things.<br>
-		- Added stuff.`
+let changelog = `<h1>Changelog:</h1>
+
+	
+	<br><br><br><h3>v0.1 - The Breakup</h3><br>
+		this game is no longer "The Cat Tree", which i intended to code for my now ex-girlfriend, but now for Jake, a great friend of mine
+		
+	<br><br><br><h3>v0.0 - The Birthing</h3><br>
+		its literally just the birthing`
+		
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -43,6 +52,24 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	///////////////////////////////////
+	/// sharklayer1
+	///////////////////////////////////
+
+	// sharklayer1 + + + Row 1 //
+	
+	if (hasUpgrade("sharklayer1", 11)) gain = gain.times(1.15)
+	if (hasUpgrade("sharklayer1", 12)) gain = gain.times(1.2)
+	if (hasUpgrade("sharklayer1", 13)) gain = gain.times(1.25)
+	if (hasUpgrade("sharklayer1", 14)) gain = gain.times(1.75)
+	
+
+	// sharklayer1 + + + Row 2 //
+
+	if (hasUpgrade("sharklayer1", 21)) gain = gain.times(upgradeEffect("sharklayer1", 21))
+	if (hasUpgrade("sharklayer1", 22)) gain = gain.times(upgradeEffect("sharklayer1", 22))
+
+
 	return gain
 }
 
